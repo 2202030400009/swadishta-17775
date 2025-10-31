@@ -5,10 +5,8 @@ import { MenuCard } from "@/components/MenuCard";
 import { CartDrawer } from "@/components/CartDrawer";
 import { CheckoutForm } from "@/components/CheckoutForm";
 import { Receipt } from "@/components/Receipt";
+import { LogoIntro } from "@/components/LogoIntro";
 import { MenuItem, CartItem, Order } from "@/types/menu";
-import { Button } from "@/components/ui/button";
-import { Shield } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import restaurantLogo from "@/assets/restaurant-logo.png";
 
@@ -17,7 +15,7 @@ const Menu = () => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCheckout, setIsCheckout] = useState(false);
   const [currentOrder, setCurrentOrder] = useState<Order | null>(null);
-  const navigate = useNavigate();
+  const [showIntro, setShowIntro] = useState(true);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -112,6 +110,10 @@ const Menu = () => {
     }
   };
 
+  if (showIntro) {
+    return <LogoIntro onComplete={() => setShowIntro(false)} />;
+  }
+
   if (currentOrder) {
     return <Receipt order={currentOrder} onBack={() => setCurrentOrder(null)} />;
   }
@@ -138,13 +140,6 @@ const Menu = () => {
                 <p className="text-sm text-muted-foreground">Premium Indian Cuisine</p>
               </div>
             </div>
-            <Button
-              variant="outline"
-              onClick={() => navigate('/admin')}
-            >
-              <Shield className="w-4 h-4 mr-2" />
-              Admin
-            </Button>
           </div>
         </div>
       </header>

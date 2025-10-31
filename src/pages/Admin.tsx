@@ -123,11 +123,11 @@ const Admin = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="orders" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
-            <TabsTrigger value="orders">Live Orders</TabsTrigger>
-            <TabsTrigger value="menu">Menu Management</TabsTrigger>
-            <TabsTrigger value="history">Order History</TabsTrigger>
-            <TabsTrigger value="analysis">Analysis</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 mb-8">
+            <TabsTrigger value="orders" className="text-xs sm:text-sm">Live Orders</TabsTrigger>
+            <TabsTrigger value="menu" className="text-xs sm:text-sm">Menu Management</TabsTrigger>
+            <TabsTrigger value="history" className="text-xs sm:text-sm">Order History</TabsTrigger>
+            <TabsTrigger value="analysis" className="text-xs sm:text-sm">Analysis</TabsTrigger>
           </TabsList>
 
           <TabsContent value="orders">
